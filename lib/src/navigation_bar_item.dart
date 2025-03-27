@@ -14,6 +14,8 @@ class NavigationBarItem extends StatelessWidget {
   final double? iconSize;
   final VoidCallback onTap;
   final Widget? child;
+  final String? label;
+  final double? labelSize;
 
   NavigationBarItem({
     required this.isActive,
@@ -27,6 +29,8 @@ class NavigationBarItem extends StatelessWidget {
     required this.iconSize,
     required this.onTap,
     this.child,
+    this.label,
+    this.labelSize,
   });
 
   @override
@@ -49,6 +53,8 @@ class NavigationBarItem extends StatelessWidget {
                 activeColor: activeColor,
                 inactiveColor: inactiveColor,
                 child: child,
+                label: label,
+                labelSize: labelSize,
               ),
             ),
             splashColor: Colors.transparent,

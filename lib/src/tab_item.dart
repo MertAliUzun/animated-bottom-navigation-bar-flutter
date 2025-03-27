@@ -7,6 +7,8 @@ class TabItem extends StatelessWidget {
   final Color? activeColor;
   final Color? inactiveColor;
   final Widget? child;
+  final String? label;
+  final double? labelSize;
 
   const TabItem({
     Key? key,
@@ -16,16 +18,34 @@ class TabItem extends StatelessWidget {
     this.activeColor = Colors.deepPurpleAccent,
     this.inactiveColor = Colors.black,
     this.child,
+    this.label,
+    this.labelSize = 12,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => child ?? _buildDefaultTab();
 
   Widget _buildDefaultTab() {
-    return Icon(
-      iconData,
-      color: isActive ? activeColor : inactiveColor,
-      size: iconSize,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(
+          iconData,
+          color: isActive ? activeColor : inactiveColor,
+          size: iconSize,
+        ),
+        if (label != null) ...[
+          const SizedBox(height: 4),
+          Text(
+            label!,
+            style: TextStyle(
+              color: isActive ? activeColor : inactiveColor,
+              fontSize: labelSize,
+            ),
+          ),
+        ],
+      ],
     );
   }
 }

@@ -29,6 +29,9 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
   /// Icon data to render in the tab bar.
   final List<IconData>? icons;
 
+  /// Labels to render under icons in the tab bar.
+  final List<String>? labels;
+
   /// Handler which is passed every updated active index.
   final Function(int) onTap;
 
@@ -37,6 +40,9 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
 
   /// Optional custom size for each tab bar icon. Default is 24.
   final double? iconSize;
+
+  /// Optional custom size for each tab bar label. Default is 12.
+  final double? labelSize;
 
   /// Optional custom tab bar height. Default is 56.
   final double? height;
@@ -132,6 +138,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
       this.tabBuilder,
       this.itemCount,
       this.icons,
+      this.labels,
       this.height,
       this.splashRadius = _defaultSplashRadius,
       this.splashSpeedInMilliseconds,
@@ -144,6 +151,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
       this.leftCornerRadius,
       this.rightCornerRadius,
       this.iconSize,
+      this.labelSize,
       this.notchSmoothness,
       this.gapLocation,
       this.gapWidth,
@@ -196,6 +204,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
     double? leftCornerRadius,
     double? rightCornerRadius,
     double? iconSize,
+    double? labelSize,
     NotchSmoothness? notchSmoothness,
     GapLocation? gapLocation,
     double? gapWidth,
@@ -227,6 +236,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
           leftCornerRadius: leftCornerRadius ?? 0,
           rightCornerRadius: rightCornerRadius ?? 0,
           iconSize: iconSize,
+          labelSize: labelSize,
           notchSmoothness: notchSmoothness,
           gapLocation: gapLocation ?? GapLocation.end,
           gapWidth: gapWidth,
@@ -487,6 +497,8 @@ class _AnimatedBottomNavigationBarState
           iconScale: _iconScale,
           iconSize: widget.iconSize,
           onTap: () => widget.onTap(i),
+          label: widget.labels?.elementAt(i),
+          labelSize: widget.labelSize,
         ),
       );
 
