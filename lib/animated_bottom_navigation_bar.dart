@@ -192,6 +192,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
     required List<IconData> icons,
     required int activeIndex,
     required Function(int) onTap,
+    List<String>? labels,
     double? height,
     double? splashRadius,
     int? splashSpeedInMilliseconds,
@@ -222,6 +223,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
   }) : this._internal(
           key: key,
           icons: icons,
+          labels: labels,
           activeIndex: activeIndex,
           onTap: onTap,
           height: height,
